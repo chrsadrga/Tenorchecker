@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales-Driven Micro-Site Prototype 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb;
+        }
+        .glass-morphism {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .shadow-premium {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+        input:focus, select:focus {
+            outline: none;
+            border-color: #2563eb;
+            ring: 2px;
+            ring-color: #bfdbfe;
+        }
+    </style>
+</head>
+<body class="max-w-md mx-auto bg-white min-h-screen relative overflow-x-hidden shadow-2xl">
+
+    <!-- Header / Brand -->
+    <nav class="p-4 flex justify-between items-center glass-morphism sticky top-0 z-50">
+        <div class="font-black text-blue-600 text-xl tracking-tighter italic">EV-DEALER.</div>
+        <div class="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded-full font-bold">PROMO 2026</div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative h-72">
+        <img src="https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=800&q=80" alt="Mobil Listrik" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
+        <div class="absolute bottom-0 p-6 text-white">
+            <h1 class="text-3xl font-extrabold leading-tight">IONIQ 6 Modern Edition</h1>
+            <p class="text-sm text-gray-200 opacity-90 mt-2">Masa depan berkendara dengan gaya dan efisiensi maksimal.</p>
+        </div>
+    </section>
+
+    <!-- Highlights Grid -->
+    <div class="grid grid-cols-3 gap-2 p-4 -mt-8 relative z-10">
+        <div class="bg-white p-3 rounded-xl shadow-premium text-center border">
+            <div class="text-blue-600 font-bold text-sm">614 KM</div>
+            <div class="text-[10px] text-gray-500">Range</div>
+        </div>
+        <div class="bg-white p-3 rounded-xl shadow-premium text-center border">
+            <div class="text-blue-600 font-bold text-sm">18 Menit</div>
+            <div class="text-[10px] text-gray-500">Fast Charge</div>
+        </div>
+        <div class="bg-white p-3 rounded-xl shadow-premium text-center border">
+            <div class="text-blue-600 font-bold text-sm">AWD</div>
+            <div class="text-[10px] text-gray-500">Drive Train</div>
+        </div>
+    </div>
+
+    <!-- Sales-Driven Calculator -->
+    <section class="p-6">
+        <div class="bg-blue-600 rounded-2xl p-6 shadow-xl text-white">
+            <h2 class="text-lg font-bold mb-1">Simulasi Kredit Instan</h2>
+            <p class="text-xs text-blue-100 mb-6">Hitung budget bulanan Anda dengan mudah.</p>
+
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-[10px] uppercase tracking-wider font-bold mb-1 text-blue-200">Harga OTR (Rp)</label>
+                    <input type="number" id="harga" value="950000000" class="w-full p-3 rounded-xl bg-blue-700 border-none text-white font-bold text-lg" oninput="updateCalculation()">
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-[10px] uppercase tracking-wider font-bold mb-1 text-blue-200">DP (20%)</label>
+                        <input type="number" id="dp" value="190000000" class="w-full p-3 rounded-xl bg-blue-700 border-none text-white font-bold" oninput="updateCalculation()">
+                    </div>
+                    <div>
+                        <label class="block text-[10px] uppercase tracking-wider font-bold mb-1 text-blue-200">Tenor (Tahun)</label>
+                        <select id="tenor" class="w-full p-3 rounded-xl bg-blue-700 border-none text-white font-bold" onchange="updateCalculation()">
+                            <option value="1">1 Tahun</option>
+                            <option value="3">3 Tahun</option>
+                            <option value="5" selected>5 Tahun</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="pt-4 border-t border-blue-500 mt-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-blue-100">Estimasi Cicilan:</span>
+                        <div class="text-right">
+                            <span id="hasil" class="text-2xl font-black">Rp 14.500.000</span>
+                            <span class="block text-[10px] text-blue-200">/ Bulan*</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Section (The Sales Agent) -->
+    <section class="p-6 bg-gray-50 border-y">
+        <div class="flex items-center space-x-4">
+            <div class="relative">
+                <img src="https://i.pravatar.cc/150?u=sales01" alt="Sales Agent" class="w-16 h-16 rounded-full border-4 border-white shadow-md">
+                <div class="absolute bottom-0 right-0 w-4 h-4 bg-green-500 border-2 border-white rounded-full"></div>
+            </div>
+            <div>
+                <h3 class="font-bold text-gray-800">Andika Pratama</h3>
+                <p class="text-xs text-gray-500 mb-1 leading-none">Senior EV Specialist</p>
+                <div class="flex items-center space-x-1">
+                    <span class="text-yellow-400 text-xs">★★★★★</span>
+                    <span class="text-[10px] text-gray-400 font-medium">(4.9/5 Rating Agen)</span>
+                </div>
+            </div>
+        </div>
+        <div class="mt-4 bg-white p-3 rounded-lg border border-dashed border-gray-300 italic text-xs text-gray-600">
+            "Siap bantu hitung simulasi terbaik dan urus dokumen sampai mobil dikirim ke depan pintu rumah Anda!"
+        </div>
+    </section>
+
+    <!-- Testimonials Small -->
+    <section class="p-6">
+        <h4 class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">Serah Terima Terbaru</h4>
+        <div class="flex space-x-2 overflow-x-auto pb-4 scrollbar-hide">
+            <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=200&q=80" class="w-32 h-32 rounded-lg object-cover flex-shrink-0 grayscale hover:grayscale-0 transition shadow-md">
+            <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=200&q=80" class="w-32 h-32 rounded-lg object-cover flex-shrink-0 grayscale hover:grayscale-0 transition shadow-md">
+            <img src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?auto=format&fit=crop&w=200&q=80" class="w-32 h-32 rounded-lg object-cover flex-shrink-0 grayscale hover:grayscale-0 transition shadow-md">
+        </div>
+    </section>
+
+    <!-- Footer Space -->
+    <div class="h-24"></div>
+
+    <!-- Sticky CTA Button -->
+    <div class="fixed bottom-0 max-w-md w-full p-4 glass-morphism z-50">
+        <a href="#" id="waLink" class="flex items-center justify-center space-x-3 bg-green-500 hover:bg-green-600 text-white py-4 rounded-2xl font-black shadow-lg transform transition active:scale-95">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            <span>Kirim Pesanan Ke WhatsApp</span>
+        </a>
+    </div>
+
+    <script>
+        function updateCalculation() {
+            const harga = parseFloat(document.getElementById('harga').value) || 0;
+            const dp = parseFloat(document.getElementById('dp').value) || 0;
+            const tenorTahun = parseInt(document.getElementById('tenor').value);
+            const tenorBulan = tenorTahun * 12;
+            
+            // Asumsi Bunga Flat 5% per tahun (Sesuai era 2026 yang mungkin kompetitif)
+            const bungaTahun = 0.05;
+            const pokok = harga - dp;
+            const totalBunga = pokok * bungaTahun * tenorTahun;
+            const totalHutang = pokok + totalBunga;
+            
+            const cicilanPerBulan = totalHutang / tenorBulan;
+            
+            // Update Tampilan
+            document.getElementById('hasil').innerText = "Rp " + Math.round(cicilanPerBulan).toLocaleString('id-ID');
+            
+            // Update Link WhatsApp agar dinamis membawa data hitungan
+            const pesan = `Halo Mas Budi, saya tertarik dengan Ioniq 6. Saya sudah mencoba simulasi di web: %0A- Harga: Rp ${harga.toLocaleString('id-ID')} %0A- DP: Rp ${dp.toLocaleString('id-ID')} %0A- Tenor: ${tenorTahun} Tahun %0A- Estimasi Cicilan: Rp ${Math.round(cicilanPerBulan).toLocaleString('id-ID')}/bln %0A%0AMohon info ketersediaan unitnya ya.`;
+            document.getElementById('waLink').href = `https://wa.me/6287840002623?text=${pesan}`;
+        }
+
+        // Jalankan saat pertama kali load
+        window.onload = updateCalculation;
+    </script>
+</body>
+</html>
